@@ -1,7 +1,7 @@
-<h2>Categories (<%= @categories.length %>)</h2>
+<h1>Choose Your Product From Listed Categories</h1>
 
 <ol>
 <% @categories.each do |category| %>
-    <li><%= category.title %></li>
+    <li><strong><%= category.title %></strong>(<%= category.products.length %> products)</li>
 <% end %>
 </ol>
