@@ -1,7 +1,9 @@
 <h1>Choose Your Product From Listed Categories</h1>
 
 <ol>
-<% @categories.each do |category| %>
-    <li><strong><%= category.title %></strong>(<%= category.products.length %> products)</li>
-<% end %>
+    <% @categories.each do |category| %>
+        <li>
+            <strong><%= link_to category.title, category_products_path(category) %></strong>(<%= category.products.length %> products)
+        </li>
+    <% end %>
 </ol>

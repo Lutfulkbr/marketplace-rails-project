@@ -1,0 +1,10 @@
+<h1>Products from <%= @category.title.singularize %> category:</h1>
+
+<ol>
+ <% @products.each do |product| %>
+    <li><%= product.title %> (<%= number_to_currency product.price %>)</li>
+    <p><%= product.description %></p>
+ <% end %>
+</ol>
+
+<%= link_to "Back", root_path %>
