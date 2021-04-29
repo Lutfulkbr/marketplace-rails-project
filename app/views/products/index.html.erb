@@ -1,13 +1,26 @@
 <h1>Products from <%= @category.title.singularize %> category:</h1>
 
-        <%= debug session[:cart] %>
+<details>
+    <summary>Shopping Cart</summary>
+    <ul>
+    <% @cart.each do |product| %>
+        <li><%= product.title %></li>
+    <% end %>
+    </ul>
+    <hr style="border-top: 1px dashed #8c8b8b;border-bottom:1px dashed #fff">
+</details>
 
     <ol>
         <% @products.each do |product| %>
             <li><%= product.title %></li>
             <p>Price: <%= number_to_currency product.price %></p>
             <p><%= product.description %></p>
-            <p><%= link_to "add to cart", add_to_cart_path(product), method: :post %></p>
+            <% if @cart.include?(product) %>
+                <p>*Product is in your cart</p>
+                <p><%= link_to "add to cart", add_to_cart_path(product), method: :post %></p>
+            <% else %>
+                <p><%= link_to "add to cart", add_to_cart_path(product), method: :post %></p>
+            <% end %>
         <% end %>
     </ol>
 

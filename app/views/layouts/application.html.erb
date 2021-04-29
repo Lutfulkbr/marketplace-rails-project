@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MarketplaceRailsProject</title>
+    <title>Master Marketplace</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,13 @@
   </head>
 
   <body>
+  <div style="text-align:right">
+<% if logged_in? %>
+  <%= button_to "Logout", logout_path %>
+<% else %>
+  <%= button_to "Sign-in", login_path, method: 'get' %>
+<% end %>
+</div>
     <%= yield %>
   </body>
 </html>
