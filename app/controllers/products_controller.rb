@@ -13,6 +13,12 @@ class ProductsController < ApplicationController
         redirect_to request.referrer
     end
 
+    def remove_from_cart
+        id = params[:id].to_i
+        session[:cart].delete(id)
+        redirect_to request.referrer
+    end
+
     private
 
     def cart_session

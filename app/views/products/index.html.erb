@@ -2,25 +2,33 @@
 
 <details>
     <summary>Shopping Cart</summary>
-    <ul>
-    <% @cart.each do |product| %>
-        <li><%= product.title %></li>
+    <% if @cart.empty? %>
+        <p>No item in cart.</p>
+    <% else %>
+        <ul>
+          <% @cart.each do |product| %>
+            <li><%= product.title %> - <%= link_to "remove from cart", remove_from_cart_path(product), method: :delete %></li>
+          <% end %>
+        </ul>
     <% end %>
-    </ul>
     <hr style="border-top: 1px dashed #8c8b8b;border-bottom:1px dashed #fff">
 </details>
 
     <ol>
         <% @products.each do |product| %>
-            <li><%= product.title %></li>
-            <p>Price: <%= number_to_currency product.price %></p>
+
+            <li><strong><%= product.title %></strong></li>
             <p><%= product.description %></p>
+            <p>Price: <%= number_to_currency product.price %></p>
+
             <% if @cart.include?(product) %>
-                <p>*Product is in your cart</p>
-                <p><%= link_to "add to cart", add_to_cart_path(product), method: :post %></p>
-            <% else %>
-                <p><%= link_to "add to cart", add_to_cart_path(product), method: :post %></p>
-            <% end %>
+            <p>*Product is in your cart</p>
+            <p><%= button_to "remove from cart", remove_from_cart_path(product), method: :delete %></p>
+            <p><%= button_to "add to cart", add_to_cart_path(product) %></p>
+        <% else %>
+            <p><%= button_to "add to cart", add_to_cart_path(product) %></p>
+        <% end %>
+
         <% end %>
     </ol>
 
