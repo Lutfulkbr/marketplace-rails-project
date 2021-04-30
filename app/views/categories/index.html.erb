@@ -1,5 +1,9 @@
 <h1>Choose Your Product From Listed Categories</h1>
 
+<% if current_user.admin %>
+<h2>Hi</h2>
+<% end %>
+
 <ol>
     <% @categories.each do |category| %>
         <li>

@@ -22,7 +22,7 @@ class ProductsController < ApplicationController
     private
 
     def cart_session
-        session[:cart] ||= []
+        session[:cart] || []
     end
 
     def load_cart
