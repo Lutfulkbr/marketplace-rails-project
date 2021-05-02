@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   post '/logout', to: 'sessions#destroy'
 
-  resources :categories, only: [:index] do
-    resources :products, only: [:index]
+  resources :categories do
+    resources :products
   end
 
   post 'products/add_to_cart/:id', to: 'products#add_to_cart', as: 'add_to_cart'

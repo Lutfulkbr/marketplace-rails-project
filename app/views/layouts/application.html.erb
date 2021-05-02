@@ -12,13 +12,16 @@
 
   <body>
   
-  <div style="text-align:right">
-
-<% if logged_in? %>
-  <%= button_to "Logout", logout_path %>
-<% else %>
-  <%= button_to "Sign-in", login_path, method: 'get' %>
-<% end %>
+<div style="text-align:right">
+  <% if logged_in? && current_user.admin %>
+    <h3>Hello, Admin</h3>
+    <%= link_to "Marketplace", root_path %><br><br> <%= button_to "Logout", logout_path %>
+  <% elsif logged_in? %>
+    <h3>Hello, <%= current_user.username %></h3>
+    <%= link_to "Marketplace", root_path %><br><br> <%= button_to "Logout", logout_path %>
+  <% else %>
+    <%= link_to "Marketplace", root_path %> <%= link_to "Sign-in", login_path %>
+  <% end %>
 
 </div>
 

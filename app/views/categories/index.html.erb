@@ -1,13 +1,14 @@
 <h1>Choose Your Product From Listed Categories</h1>
 
-<% if current_user.admin %>
-<h2>Hi</h2>
+<% if logged_in? && current_user.admin %>
+    <%= link_to "+ New Category", new_category_path %>
 <% end %>
 
 <ol>
     <% @categories.each do |category| %>
-        <li>
-            <strong><%= link_to category.title, category_products_path(category) %></strong>(<%= category.products.length %> products)
-        </li>
+        <li><strong><%= link_to category.title, category_products_path(category) %></strong>(<%= category.products.length %> products)</li>
+        <% if logged_in? && current_user.admin %>
+            <%= link_to "Edit", edit_category_path(category) %> <%= link_to "Delete", category_path(category), method: 'delete' %><br><br>
+        <% end %>
     <% end %>
 </ol>

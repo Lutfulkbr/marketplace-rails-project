@@ -1,0 +1,7 @@
+<h1>Create New Category</h1>
+
+<%= form_with model: @category do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <%= f.submit %>
+<% end %>
