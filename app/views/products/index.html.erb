@@ -1,3 +1,4 @@
+<div style="background-color:#eeeeee">
 <h1>Products from <%= @category.title.singularize %> category:</h1>
 
 <% if logged_in? %>
@@ -13,10 +14,14 @@
             </ul>
         <% end %>
         <hr style="border-top: 1px dashed #8c8b8b;border-bottom:1px dashed #fff">
-    </details>
+    </details><br><br>
 <% else %>
     <h3><%= link_to "Sign-in", login_path %> to purchase</h3>
 <% end %>
+
+    <% if logged_in? && current_user.admin %>
+            <%= link_to "+ New Product", new_category_product_path(@category) %>
+    <% end %>
 
     <ol>
         <% @products.each do |product| %>
@@ -39,3 +44,4 @@
     </ol>
 
 <%= link_to "Back", root_path %>
+</div>

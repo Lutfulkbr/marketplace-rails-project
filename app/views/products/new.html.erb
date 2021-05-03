@@ -1,0 +1,12 @@
+<h1>Create new product for <%= @category.title %> category.</h1>
+
+<%= form_for([@category, @product]) do |f| %>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %><br>
+    <%= f.label :description %><br>
+    <%= f.text_area :description %><br>
+    <%= f.label :price %><br>
+    <%= f.number_field :price, step: :any %><br><br>
+    <%= f.hidden_field :category_ids, value: @category.id %>
+    <%= f.submit %>
+<% end %>

@@ -2,9 +2,7 @@
 
 <%= form_with model: @product, url: category_product_path(params[:category_id], @product) do |f| %>
     <%= f.text_field :title, value: @product.title %>
-    <% if @product.description %>
     <%= f.text_field :description, value: @product.description %>
-    <% end %>
     <%= f.number_field :price, value: @product.price %>
     <%= f.submit %>
 <% end %>

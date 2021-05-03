@@ -1,4 +1,6 @@
-<h1>Choose Your Product From Listed Categories</h1>
+<div style="background-color:#eeeeee">
+<div style="text-align:center;color:green"><h1>Welcome to Master Marketplace.</h1></div>
+<h3>Choose Your Product From Listed Categories</h3>
 
 <% if logged_in? && current_user.admin %>
     <%= link_to "+ New Category", new_category_path %>
@@ -6,9 +8,10 @@
 
 <ol>
     <% @categories.each do |category| %>
-        <li><strong><%= link_to category.title, category_products_path(category) %></strong>(<%= category.products.length %> products)</li>
+        <li><strong><%= link_to category.title, category_products_path(category) %></strong>(<%= category.products.length %> products)</li><br>
         <% if logged_in? && current_user.admin %>
             <%= link_to "Edit", edit_category_path(category) %> <%= link_to "Delete", category_path(category), method: 'delete' %><br><br>
         <% end %>
     <% end %>
 </ol>
+</div>
