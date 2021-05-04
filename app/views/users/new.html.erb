@@ -1,7 +1,17 @@
+<%= link_to "Marketplace", root_path %><br><br>
 <div style="text-align:center;background-color:powderblue;width:50%;margin:auto">
     <h1>Sign Up</h1>
     <p>Please fill in this form to create an account!</p>
 
+    <% if @user.errors.any? %>
+        <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+            <% @user.errors.each do |error| %>
+                <p><%= error.full_message %>!</p>
+            <% end %>
+        </div>
+    <% end %>
+    
     <%= form_with model: @user, url: signup_path do |f| %>
         <%= f.text_field :username, placeholder: 'Username' %><br><br>
         <%= f.email_field :email, placeholder: 'Email' %><br><br>
