@@ -1,0 +1,10 @@
+<div style="text-align:center">
+<h2>Edit Your Information:</h2>
+
+<%= form_with model: @user do |f| %>
+    <%= f.text_field :username, value: @user.username %><br><br>
+    <%= f.email_field :email, value: @user.email %><br><br>
+    <%= f.submit "Update" %>
+<% end %>
+<%= link_to "Back", :back %>
+</div>

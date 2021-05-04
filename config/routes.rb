@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   post '/logout', to: 'sessions#destroy'
 
+  resources :users, only: [:show, :edit, :update, :destroy]
+
   resources :categories do
     resources :products
   end

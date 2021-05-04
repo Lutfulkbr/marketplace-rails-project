@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
 
+    def show
+        @user = User.find(params[:id])
+        render :layout => false
+    end
+
     def new
         @user = User.new
         render :layout => false
@@ -12,6 +17,28 @@ class UsersController < ApplicationController
             redirect_to root_path
         else
             render :new
+        end
+    end
+
+    def edit
+        @user = User.find(params[:id])
+        render :layout => false
+    end
+
+    def update
+        @user = User.find(params[:id])
+        if @user.update(user_params)
+            redirect_to user_path(@user)
+        else
+            render :show
+        end
+    end
+
+    def destroy
+        @user = User.find(params[:id])
+        if @user
+            @user.delete
+            redirect_to root_path
         end
     end
 
