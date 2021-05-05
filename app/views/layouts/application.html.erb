@@ -12,19 +12,22 @@
 
   <body>
   
-<div style="text-align:right">
-  <% if logged_in? && current_user.admin %>
-    <h3>Hello, Admin</h3>
-    <%= link_to "Marketplace", root_path %><br> <%= link_to "Your Account", user_path(current_user) %><br><br>
-  <% elsif logged_in? %>
-    <h3>Hello, <%= current_user.username %></h3>
-    <%= link_to "Marketplace", root_path %><br> <%= link_to "Your Account", user_path(current_user) %><br><br>
-  <% else %>
-    <%= link_to "Marketplace", root_path %> <%= link_to "Sign-in", login_path %>
-  <% end %>
+    <div style="text-align:right">
 
-</div>
+      <% if logged_in? && current_user.admin %>
+        <h3>Hello, Admin</h3>
+        <%= link_to "Marketplace", root_path %><br> <%= link_to "Your Account", user_path(current_user) %><br><br>
+      <% elsif logged_in? %>
+        <h3>Hello, <%= current_user.username %></h3>
+        <%= link_to "Marketplace", root_path %><br> <%= link_to "Your Account", user_path(current_user) %><br><br>
+      <% else %>
+        <%= link_to "Marketplace", root_path %> <%= link_to "Sign-in", login_path %>
+      <% end %>
+
+    </div>
 
     <%= yield %>
+
   </body>
+
 </html>

@@ -1,4 +1,14 @@
+<div style="text-align:center;background-color:#eeeeee">
 <h1>Create new product for <%= @category.title %> category.</h1>
+
+<% if @product.errors.any? %>
+        <div id="error_explanation">
+        <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+            <% @product.errors.each do |error| %>
+                <p><%= error.full_message %>!</p>
+            <% end %>
+        </div>
+    <% end %>
 
 <%= form_for([@category, @product]) do |f| %>
     <%= f.label :title %><br>
@@ -10,3 +20,4 @@
     <%= f.hidden_field :category_ids, value: @category.id %>
     <%= f.submit %>
 <% end %>
+</div>
