@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_28_163352) do
+ActiveRecord::Schema.define(version: 2021_05_05_160341) do
 
   create_table "categories", force: :cascade do |t|
     t.string "title"
@@ -57,6 +57,8 @@ ActiveRecord::Schema.define(version: 2021_04_28_163352) do
     t.boolean "admin", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "uid"
+    t.string "provider"
   end
 
 end

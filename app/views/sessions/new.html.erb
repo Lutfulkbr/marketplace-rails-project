@@ -11,4 +11,9 @@
         <%= f.password_field :password, placeholder: 'Password' %><br><br>
         <%= f.submit "Submit" %>
     <% end %>
+
+    <h3>Or Login with Google:</h3>
+
+    <%= button_to 'Google', '/auth/google_oauth2' %>
+
 </div>

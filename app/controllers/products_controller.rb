@@ -66,7 +66,7 @@ class ProductsController < ApplicationController
     end
 
     def load_cart
-        @cart = Product.find(session[:cart])
+        @cart = Product.find_by(session[:cart])
     end
 
 end
