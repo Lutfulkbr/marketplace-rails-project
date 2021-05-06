@@ -1,17 +1,16 @@
-<div style="background-color:#eeeeee">
-<div style="text-align:center;color:green"><h1>Welcome to Master Marketplace.</h1></div>
+<div style="text-align:center;background-color:#eeeeee">
+<h1 style="text-align:center;color:green">Welcome to Master Marketplace.</h1>
 <h3>Choose Your Product From Listed Categories</h3>
 
 <% if logged_in? && current_user.admin %>
-    <%= link_to "+ New Category", new_category_path %>
+    <%= link_to "+ New Category", new_category_path %><br><br>
 <% end %>
 
-<ol>
     <% @categories.each do |category| %>
-        <li><strong><%= link_to category.title, category_products_path(category) %></strong>(<%= category.products.length %> products)</li><br>
+        <strong><%= link_to category.title, category_products_path(category) %></strong>(<%= category.products.length %> products)<br><br>
         <% if logged_in? && current_user.admin %>
-            <%= link_to "Edit", edit_category_path(category) %> <%= link_to "Delete", category_path(category), method: 'delete' %><br><br>
+            <%= link_to "Edit", edit_category_path(category) %> / <%= link_to "Delete", category_path(category), method: 'delete' %><br><br>
         <% end %>
     <% end %>
-</ol>
+
 </div>

@@ -1,12 +1,15 @@
+<div style="text-align:center;background-color:#eeeeee">
 <h1>Edit product info</h1>
 
 <%= form_with model: @product, url: category_product_path(params[:category_id], @product) do |f| %>
-    <%= f.text_field :title, value: @product.title %>
+    <%= f.text_field :title, value: @product.title %><br><br>
     <% if @product.description %>
-        <%= f.text_field :description, value: @product.description %>
+        <%= f.text_field :description, value: @product.description %><br><br>
     <% else %>
-        <%= f.text_field :description, placeholder: "Product Description" %>
+        <%= f.text_field :description, placeholder: "Product Description" %><br><br>
     <% end %>
-    <%= f.number_field :price, value: @product.price %>
-    <%= f.submit %>
+    <%= f.number_field :price, value: @product.price %><br><br>
+    <%= f.submit %><br><br>
 <% end %>
+<%= link_to "Back", category_products_path %>
+</div>

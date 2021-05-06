@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
 
+    def index
+        if logged_in? && current_user.admin
+            @users = User.all
+        end
+    end
+
     def show
         @user = User.find(params[:id])
         render :layout => false
@@ -36,7 +42,7 @@ class UsersController < ApplicationController
 
     def destroy
         @user = User.find(params[:id])
-        if @user
+        if @user.id == current_user.id
             @user.delete
             redirect_to root_path
         end

@@ -1,10 +1,16 @@
-<div style="text-align:center">
+<div style="text-align:center;background-color:#eeeeee">
 <h2>Edit Your Information:</h2>
 
 <%= form_with model: @user do |f| %>
     <%= f.text_field :username, value: @user.username %><br><br>
     <%= f.email_field :email, value: @user.email %><br><br>
+    <p>Check to make <strong><%= @user.username %></strong> an admin.</p>
+    <%= f.check_box :admin %> Admin?<br><br>
     <%= f.submit "Update" %>
 <% end %>
-<%= link_to "Back", :back %>
+<% if current_user.admin %>
+    <%= link_to "Back", users_path %>
+<% else %>
+    <%= link_to "Back", :back %>
+<% end %>
 </div>

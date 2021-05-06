@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   post '/logout', to: 'sessions#destroy'
   get '/auth/:provider/callback', to: 'sessions#omniauth'
 
-  resources :users, only: [:show, :edit, :update, :destroy]
+  resources :users, only: [:index, :show, :edit, :update, :destroy]
 
   resources :categories do
     resources :products

@@ -1,0 +1,9 @@
+<div style="text-align:center;background-color:#eeeeee">
+
+<% if logged_in? && current_user.admin %>
+    <% @users.each do |user| %>
+        <h3><%= link_to user.username, edit_user_path(user) %></h3>
+        <p>email: <%= user.email %></p>
+    <% end %>
+<% end %>
+</div>

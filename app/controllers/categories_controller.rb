@@ -33,10 +33,8 @@ class CategoriesController < ApplicationController
 
     def destroy
         @category = Category.find(params[:id])
-        if @category
-            @category.destroy
-            redirect_to root_path
-        end
+        @category.destroy!
+        redirect_to root_path
     end
 
     private

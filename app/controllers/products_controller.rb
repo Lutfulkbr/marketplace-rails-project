@@ -36,22 +36,20 @@ class ProductsController < ApplicationController
     end
 
     def destroy
-        product = Product.find(params[:id])
-        if product
-            product.destroy
-            redirect_to category_products_path
-        end
+        @product = Product.find(params[:id])
+        @product.destroy!
+        redirect_to category_products_path
     end
 
     def add_to_cart
         id = params[:id].to_i
-        session[:cart] << id unless session[:cart].include?(id)
+        session[:cart][current_user.id] << id unless session[:cart][current_user.id].include?(id)
         redirect_to request.referrer
     end
 
     def remove_from_cart
         id = params[:id].to_i
-        session[:cart].delete(id)
+        session[:cart][current_user.id].delete(id)
         redirect_to request.referrer
     end
 
@@ -62,11 +60,16 @@ class ProductsController < ApplicationController
     end
 
     def cart_session
-        session[:cart] || []
+        if logged_in?
+            session[:cart] ||= {}
+            session[:cart][current_user.id] ||= []
+        end
     end
 
     def load_cart
-        @cart = Product.find_by(session[:cart])
+        if logged_in?
+            @cart = Product.where(id: session[:cart][current_user.id])
+        end
     end
 
 end
