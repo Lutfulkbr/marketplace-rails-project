@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
     attr_accessor :quantity
     
-    validates :title, presence: true, uniqueness: true
+    validates :title, presence: true
     validates :price, presence: true
 
     has_many :product_categories, dependent: :destroy

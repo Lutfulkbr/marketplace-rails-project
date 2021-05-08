@@ -1,0 +1,8 @@
+<% if object.errors.any? %>
+        <div id="error_explanation">
+            <h3><%= pluralize(object.errors.count, "error") %> prohibited this category from being saved:</h3>
+            <% object.errors.each do |error| %>
+                <p><%= error.full_message %>!</p>
+            <% end %>
+        </div>
+<% end %>

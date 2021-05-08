@@ -1,7 +1,9 @@
 <div style="text-align:center;background-color:#eeeeee">
 <h1 style="color:#f21170">Edit Category Info</h1>
 
-<%= form_for @category do |f| %>
+<%= render partial: "users/errors", locals: {object: @category} %>
+
+<%= form_with model: @category do |f| %>
     <%= f.text_field :title, value: @category.title %>
     <%= f.submit "Update" %>
 <% end %>

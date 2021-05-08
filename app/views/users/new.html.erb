@@ -1,9 +1,10 @@
 <%= link_to "Marketplace", root_path %><br><br>
 <div style="text-align:center;background-color:powderblue;width:50%;margin:auto">
+
     <h1>Sign Up</h1>
     <p>Please fill in this form to create an account!</p>
 
-    <%= render 'error' %>
+    <%= render partial: "errors", locals: {object: @user} %>
     
     <%= form_with model: @user, url: signup_path do |f| %>
         <%= f.text_field :username, placeholder: 'Username' %><br><br>
