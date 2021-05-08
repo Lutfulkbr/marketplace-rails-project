@@ -1,8 +1,8 @@
 <%= link_to "Marketplace", root_path %><br><br>
 <%= button_to "Delete Your Account", user_path(@user), method: :delete %>
 
-<div style="text-align:center">
-  <h1>Here's Your Account Information:</h1>
+<div style="text-align:center;background-color:#eeeeee">
+  <h1 style="color:#f21170">Here's Your Account Information:</h1>
   <h3>Username: <%= @user.username %></h3>
   <h3>Email: <%= @user.email %></h3>
   <%= link_to "Edit Your Info", edit_user_path(@user) %><br><br>

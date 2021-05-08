@@ -1,16 +1,19 @@
 <div style="text-align:center;background-color:#eeeeee">
-<h2>Edit Your Information:</h2>
 
-<%= form_with model: @user do |f| %>
-    <%= f.text_field :username, value: @user.username %><br><br>
-    <%= f.email_field :email, value: @user.email %><br><br>
-    <p>Check to make <strong><%= @user.username %></strong> an admin.</p>
-    <%= f.check_box :admin %> Admin?<br><br>
-    <%= f.submit "Update" %>
-<% end %>
-<% if current_user.admin %>
-    <%= link_to "Back", users_path %>
-<% else %>
-    <%= link_to "Back", :back %>
-<% end %>
+    <% if logged_in? && current_user.admin %>
+        <h1 style="color:#f21170">Edit <%= @user.username %>'s Information:</h1>
+    <% else logged_in? %>
+        <h1 style="color:#f21170">Edit Your Information:</h1>
+    <% end %>
+
+    <%= form_with model: @user do |f| %>
+        <%= render partial: 'form', locals: {f: f} %>
+    <% end %>
+
+    <% if logged_in? && current_user.admin %>
+        <%= link_to "Back", users_path %>
+    <% else %>
+        <%= link_to "Back", :back %>
+    <% end %>
+
 </div>

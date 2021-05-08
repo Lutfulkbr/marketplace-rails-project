@@ -19,4 +19,10 @@
     display: table;
     margin: auto;
   }
+
+  .alert {
+    color: red;
+    display: table;
+    margin: auto;
+  }
   

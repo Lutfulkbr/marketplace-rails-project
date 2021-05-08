@@ -1,14 +1,7 @@
 <div style="text-align:center;background-color:#eeeeee">
 <h1>Create New Category</h1>
 
-<% if @category.errors.any? %>
-        <div id="error_explanation">
-        <h3><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h3>
-            <% @category.errors.each do |error| %>
-                <p><%= error.full_message %>!</p>
-            <% end %>
-        </div>
-    <% end %>
+<%= render 'error' %>
 
 <%= form_with model: @category do |f| %>
     <%= f.label :title %>

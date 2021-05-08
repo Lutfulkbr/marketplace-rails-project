@@ -1,5 +1,5 @@
 <div style="text-align:center;background-color:#eeeeee">
-<h1>Edit product info</h1>
+<h1 style="color:#f21170">Edit product info</h1>
 
 <%= form_with model: @product, url: category_product_path(params[:category_id], @product) do |f| %>
     <%= f.text_field :title, value: @product.title %><br><br>

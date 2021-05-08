@@ -1,0 +1,7 @@
+<%= f.text_field :username, value: @user.username %><br><br>
+<%= f.email_field :email, value: @user.email %><br><br>
+    <% if current_user.admin %>
+        <p>Check to make <strong><%= @user.username %></strong> an admin.</p>
+        <%= f.check_box :admin %> Admin?<br><br>
+    <% end %>
+<%= f.submit "Update" %>

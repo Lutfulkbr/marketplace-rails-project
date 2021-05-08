@@ -1,5 +1,5 @@
 <div style="background-color:#eeeeee">
-<h1>Products from <%= @category.title.singularize %> category:</h1>
+<h1 style="color:#f21170">Products from <%= @category.title.singularize %> category:</h1>
 
 <% if logged_in? %>
     <details>
@@ -9,7 +9,8 @@
         <% else %>
             <ul>
             <% @cart.each do |product| %>
-                <li><%= product.title %> - <%= number_to_currency product.price %> &nbsp <%= link_to "remove from cart", remove_from_cart_path(product), method: :delete %></li>
+                <li><%= "#{product.quantity} #{product.title}" %> - <%= number_to_currency product.price * product.quantity %> &nbsp 
+                <%= link_to "remove from cart", remove_from_cart_path(product), method: :delete %></li>
             <% end %>
             </ul>
         <% end %>
@@ -31,7 +32,8 @@
             <p>Price: <%= number_to_currency product.price %></p>
 
             <% if logged_in? && current_user.admin %>
-                <%= link_to "Edit", edit_category_product_path(params[:category_id], product) %> <%= link_to "Delete", category_product_path(params[:category_id], product), method: :delete %><br><br>
+                <%= link_to "Edit", edit_category_product_path(params[:category_id], product) %>
+                <%= link_to "Delete", category_product_path(params[:category_id], product), method: :delete %><br><br>
             <% elsif logged_in? && @cart.include?(product) %>
                 <p>*Product is in your cart</p>
                 <p><%= link_to "remove from cart", remove_from_cart_path(product), method: :delete %></p>
