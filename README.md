@@ -1,12 +1,8 @@
 # README
-
-This README would normally document whatever steps are necessary to get the application up and running.
-
-Things you may want to cover:
+e_Marketplace
 
 Ruby version - 2.6.1
 
-e_Marketplace
 e_Marketplace is an e_commerce site designed in rails. where users to create an account and find the product they are looking for. Signing up is easy, all you need is an email address, username, and password. We've also added signup functionality via google.
 
 Installation
@@ -20,4 +16,8 @@ Please make sure to update tests as appropriate.
 
 MIT License
 
+<<<<<<< HEAD
 https://github.com/lskabir/e_marketplace/blob/main/LICENSE
+=======
+https://github.com/lskabir/e_marketplace/blob/main/LICENSE
+>>>>>>> c500dc2732e3b0fe5d1f6c391e9e1cf60f5224f1
