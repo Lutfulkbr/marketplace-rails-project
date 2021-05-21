@@ -16,8 +16,4 @@ Please make sure to update tests as appropriate.
 
 MIT License
 
-<<<<<<< HEAD
 https://github.com/lskabir/e_marketplace/blob/main/LICENSE
-=======
-https://github.com/lskabir/e_marketplace/blob/main/LICENSE
->>>>>>> c500dc2732e3b0fe5d1f6c391e9e1cf60f5224f1
