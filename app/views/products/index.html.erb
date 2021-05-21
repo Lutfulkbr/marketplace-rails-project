@@ -1,27 +1,27 @@
 <div style="background-color:#eeeeee">
-<h1 style="color:#f21170">Products from <%= @category.title.singularize %> category:</h1>
+    <h1 style="color:#f21170">Products from <%= @category.title.singularize %> category:</h1>
 
-<% if logged_in? %>
-    <details>
-        <summary>Shopping Cart</summary>
-        <% if @cart.empty? %>
-            <p>No item in cart.</p>
-        <% else %>
-            <ul>
-            <% @cart.each do |product| %>
-                <li><%= "#{product.quantity} #{product.title}" %> - <%= number_to_currency product.price * product.quantity %> &nbsp 
-                <%= link_to "remove from cart", remove_from_cart_path(product), method: :delete %></li>
+    <% if logged_in? %>
+        <details>
+            <summary>Shopping Cart</summary>
+            <% if @cart.empty? %>
+                <p>* No item in the cart.</p>
+            <% else %>
+                <ul>
+                <% @cart.each do |product| %>
+                    <li><%= "#{product.quantity} #{product.title}" %> - <%= number_to_currency product.price * product.quantity %> &nbsp 
+                    <%= link_to "remove from cart", remove_from_cart_path(product), method: :delete %></li>
+                <% end %>
+                </ul>
             <% end %>
-            </ul>
-        <% end %>
-        <hr style="border-top: 1px dashed #8c8b8b;border-bottom:1px dashed #fff">
-    </details><br><br>
-<% else %>
-    <h3><%= link_to "Sign-in", login_path %> to purchase</h3>
-<% end %>
+            <hr style="border-top: 1px dashed #8c8b8b;border-bottom:1px dashed #fff">
+        </details><br><br>
+    <% else %>
+        <h3><%= link_to "Sign-in", login_path %> to purchase</h3>
+    <% end %>
 
     <% if logged_in? && current_user.admin %>
-            <%= link_to "+ New Product", new_category_product_path(@category) %>
+        <%= link_to "+ New Product", new_category_product_path(@category) %>
     <% end %>
 
     <ol>
@@ -30,6 +30,9 @@
             <li><strong><%= product.title %></strong></li>
             <p><%= product.description %></p>
             <p>Price: <%= number_to_currency product.price %></p>
+            <% product.product_categories.each do |product_category| %>
+                <p><%= product_category.availability %></p>
+            <% end %>
 
             <% if logged_in? && current_user.admin %>
                 <%= link_to "Edit", edit_category_product_path(params[:category_id], product) %>
@@ -45,5 +48,5 @@
         <% end %>
     </ol>
 
-<%= link_to "Back", root_path %>
+    <%= link_to "Back", root_path %>
 </div>

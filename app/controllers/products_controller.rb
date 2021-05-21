@@ -12,6 +12,7 @@ class ProductsController < ApplicationController
         if params[:category_id]
             find_category
             @product = @category.products.build
+            @product.product_categories.build
         end
     end
 
@@ -61,7 +62,7 @@ class ProductsController < ApplicationController
     private
 
     def product_params
-        params.require(:product).permit(:title, :description, :price, :category_ids)
+        params.require(:product).permit(:title, :description, :price, :category_ids, product_categories_attributes: [:availability, :category_id])
     end
 
     def cart_session
